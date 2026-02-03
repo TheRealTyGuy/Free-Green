@@ -3,12 +3,9 @@
 # get crontab
 crontab -l > mycron
 
-# current challenge, how to find control path locations
-# since we have to give crontab absolute filepath
-# append job to the end of crontab
-
+# cron runs from home usually so we need current directory
 currDir=$(pwd)
-echo "* * * * * cd $currDir && $currDir/push.sh " >> mycron
+echo "@daily cd $currDir && $currDir/push.sh " >> mycron
 
 # replace crontab
 crontab mycron
